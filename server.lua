@@ -1,4 +1,4 @@
-local CURRENT_VERSION = "1.0"
+local CURRENT_VERSION = "1.1"
 local VERSION_URL     = "https://raw.githubusercontent.com/DAGB-Roleplay-Team/G-Engine-Config-Manager/main/version.txt"
 
 local function trim(s)
@@ -12,9 +12,9 @@ local function printUpdate(latest)
     local width = math.max(#l1, #l2, #l3) + 2
 
     print("┏" .. string.rep("━", width) .. "┓")
-    print("┃ " .. l1 .. string.rep(" ", width - #l1 - 1) .. " ┃")
-    print("┃ " .. l2 .. string.rep(" ", width - #l2 - 1) .. " ┃")
-    print("┃ " .. l3 .. string.rep(" ", width - #l3 - 1) .. " ┃")
+    print("┃ " .. l1 .. string.rep(" ", width - #l1 - 1) .. "")
+    print("┃ " .. l2 .. string.rep(" ", width - #l2 - 1) .. "")
+    print("┃ " .. l3 .. string.rep(" ", width - #l3 - 1) .. "")
     print("┗" .. string.rep("━", width) .. "┛")
 end
 
@@ -26,8 +26,6 @@ local function CheckVersion()
             local latest  = raw:match("%d+%.%d+") or raw
             if latest ~= CURRENT_VERSION then
                 printUpdate(latest)
-            else
-                print("✅ G-Engine Configuration Manager est à jour (v" .. CURRENT_VERSION .. ")")
             end
         else
             print("❌ Impossible de vérifier la version (HTTP " .. tostring(statusCode) .. ")")
